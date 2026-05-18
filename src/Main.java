@@ -2,9 +2,7 @@ import java.util.*;
 
 public class Main {
 
-    // ─────────────────────────────────────────────
-    //  Граф (adjacency list) — храним прямо здесь
-    // ─────────────────────────────────────────────
+
     static Map<String, List<int[]>> adj   = new LinkedHashMap<>();
     static Map<String, Integer>     index = new LinkedHashMap<>();
     static String[]                 label;          // index -> vertex name
@@ -76,8 +74,8 @@ public class Main {
             for (int[] edge : adj.get(node)) {
                 String neighbour = label[edge[0]];
                 if (!visited.contains(neighbour)) {
-                    visited.add(neighbour);
-                    queue.offer(neighbour);
+                    visited.add(neighbour);            //BFS explores vertices level-by-level
+                    queue.offer(neighbour);           //The first time it reaches the target vertex, it is guaranteed to be the shortest path.
                 }
             }
         }                                                  
